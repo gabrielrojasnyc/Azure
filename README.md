@@ -1,2 +1,2 @@
-![alt text](azure.png "Automation")
+![alt text](azure_logo.png "Automation")
 # Azure
