@@ -1,0 +1,41 @@
+chema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+
+  //Parameters 
+  "parameters": {
+  },
+
+  //Variables
+  "variables": {
+    "vNetName": "vNetDR",
+    "vNetSubnet1": "vNetDR-1"
+  },
+
+  "resources": [
+    // Vnet
+    {
+        "apiVersion": "2015-06-15",
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[variables('vNetName')]",
+        "location": "[resourceGroup().location]",
+        "tags": {
+            "displayName": "[variables('vNetName')]"
+        },
+        "properties": {
+            "addressSpace": {
+                "addressPrefixes": [
+                    "192.168.0.0/16"
+                ]
+            },
+            "subnets": [
+                {
+                    "name": "[variables('vNetSubnet1')]",
+                    "properties": {
+                        "addressPrefix": "192.168.11.0/24"
+                    }
+                }
+            ]
+         }
+      }
+   ]
+}
